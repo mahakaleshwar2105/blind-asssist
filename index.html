@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SightAssist — Smart Glasses Concept</title>
+<meta name="description" content="SightAssist is a conceptual smart-glasses platform designed to assist blind and visually impaired people with AI-powered perception and audio feedback.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070a0f;--panel:#0d121a;--line:rgba(255,255,255,.10);--text:#f5f7fb;--muted:#9aa5b5;--cyan:#67e8f9;--blue:#60a5fa;--green:#7cf29a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 70% 10%,#11283a 0,#070a0f 34%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}.nav{position:fixed;z-index:20;top:0;left:0;right:0;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;background:rgba(7,10,15,.55);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.04em;font-size:22px}.logo span{color:var(--cyan)}.navlinks{display:flex;gap:28px;color:#cbd5e1;font-size:14px}.navlinks a:hover{color:white}.navbtn{border:1px solid var(--line);padding:10px 15px;border-radius:999px}
+.hero{min-height:100vh;padding:120px 6vw 50px;display:grid;grid-template-columns:1fr 1.05fr;gap:3vw;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--cyan);font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 18px var(--green)}
+h1{font-family:"Space Grotesk";font-size:clamp(54px,7vw,96px);line-height:.92;letter-spacing:-.07em;margin:22px 0}.gradient{background:linear-gradient(100deg,#fff 15%,#9feeff 55%,#75a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:610px}.actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}.btn{padding:14px 19px;border-radius:13px;font-weight:700;font-size:14px;border:1px solid var(--line);transition:.2s}.btn.primary{background:#eafcff;color:#061016}.btn:hover{transform:translateY(-2px)}.hero-note{margin-top:24px;font-size:12px;color:#64748b}
+.stage{height:600px;position:relative;border:1px solid var(--line);border-radius:32px;background:radial-gradient(circle at 50% 40%,rgba(61,205,255,.12),transparent 48%),linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));overflow:hidden;box-shadow:inset 0 1px rgba(255,255,255,.04),0 30px 100px rgba(0,0,0,.35)}#scene{width:100%;height:100%}.hint{position:absolute;left:22px;bottom:20px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.35);font-size:12px;color:#9aa5b5}.badge{position:absolute;right:20px;top:20px;border:1px solid rgba(103,232,249,.25);color:var(--cyan);background:rgba(103,232,249,.07);padding:8px 11px;border-radius:999px;font-size:11px;font-weight:700}
+section{padding:110px 6vw}.section-head{max-width:720px;margin-bottom:45px}.kicker{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.section-head h2{font-family:"Space Grotesk";font-size:clamp(38px,5vw,64px);letter-spacing:-.06em;margin:12px 0}.section-head p{color:var(--muted);line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:27px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border-radius:20px;min-height:210px}.icon{font-size:25px;margin-bottom:28px}.card h3{margin:0 0 10px;font-family:"Space Grotesk";font-size:22px}.card p{color:var(--muted);line-height:1.65;font-size:14px}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:stretch}.step{position:relative;padding:23px 18px;border:1px solid var(--line);border-radius:18px;background:#0b1017}.num{color:var(--cyan);font-size:11px;font-weight:800}.step h3{font-size:16px;margin:13px 0 8px}.step p{font-size:13px;line-height:1.5;color:var(--muted);margin:0}.arrow{position:absolute;right:-15px;top:50%;color:#4d6175;z-index:2}
+.tech{display:grid;grid-template-columns:1fr 1fr;gap:22px}.techbox{border:1px solid var(--line);border-radius:22px;padding:28px;background:#0b1017}.techbox h3{font-family:"Space Grotesk";font-size:25px;margin:0 0 18px}.spec{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:14px 0;font-size:14px}.spec span:last-child{color:#cbd5e1}.roadmap{display:grid;gap:12px}.phase{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:20px;border:1px solid var(--line);border-radius:17px}.phase strong{color:var(--cyan);font-size:12px;text-transform:uppercase;letter-spacing:.1em}.phase p{margin:0;color:#b7c0ce;line-height:1.6;font-size:14px}
+
+.founder{display:grid;grid-template-columns:340px 1fr;gap:45px;align-items:center}
+.founder-photo{height:390px;border:1px dashed rgba(103,232,249,.35);border-radius:28px;background:radial-gradient(circle at 50% 35%,rgba(103,232,249,.13),transparent 38%),#0b1017;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.founder-photo:before{content:"";width:125px;height:125px;border:2px solid rgba(103,232,249,.45);border-radius:50%;position:absolute;top:85px}
+.founder-photo:after{content:"";width:190px;height:120px;border:2px solid rgba(103,232,249,.35);border-radius:100px 100px 0 0;position:absolute;bottom:50px}
+.photo-label{z-index:2;background:rgba(7,10,15,.8);border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9aa5b5}
+.founder-copy h3{font-family:"Space Grotesk";font-size:clamp(34px,4vw,56px);letter-spacing:-.055em;margin:10px 0 8px}
+.founder-role{color:var(--cyan);font-weight:700;font-size:14px;margin-bottom:22px}
+.founder-copy p{color:var(--muted);line-height:1.75;max-width:650px}
+.founder-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:#cbd5e1;font-size:12px;background:rgba(255,255,255,.025)}
+@media(max-width:900px){.founder{grid-template-columns:1fr}.founder-photo{height:330px}}
+.cta{margin:20px 6vw 100px;border:1px solid rgba(103,232,249,.18);border-radius:30px;padding:55px;display:flex;align-items:center;justify-content:space-between;gap:30px;background:radial-gradient(circle at 80% 20%,rgba(103,232,249,.10),transparent 40%),#0b1017}.cta h2{font-family:"Space Grotesk";font-size:clamp(32px,4vw,55px);letter-spacing:-.05em;margin:0 0 10px}.cta p{color:var(--muted);max-width:650px;line-height:1.6}.footer{padding:28px 6vw 45px;color:#687589;font-size:12px;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:110px}.stage{height:480px}.grid,.tech{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.arrow{display:none}.navlinks{display:none}.cta{margin:10px 4vw 70px;padding:35px;display:block}.cta .btn{display:inline-block;margin-top:12px}.footer{display:block}.footer span{display:block;margin-top:8px}}
+@media(max-width:560px){section{padding:75px 5vw}.hero{padding-left:5vw;padding-right:5vw}.stage{height:390px;border-radius:22px}.flow{grid-template-columns:1fr}.nav{padding:0 5vw}h1{font-size:58px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="#">SIGHT<span>ASSIST</span></a>
+  <div class="navlinks"><a href="#features">Features</a><a href="#how">How it works</a><a href="#tech">Technology</a><a href="#founder">Founder</a><a href="#roadmap">Roadmap</a></div>
+  <a class="navbtn" href="#contact">Prototype</a>
+</nav>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> Concept prototype · 2026</div>
+    <h1>See the world.<br><span class="gradient">Hear what matters.</span></h1>
+    <p class="lead">SightAssist is a conceptual AI-powered smart-glasses system designed to help blind and visually impaired people understand their surroundings through intelligent sensing and real-time audio feedback.</p>
+    <div class="actions"><a class="btn primary" href="#how">Explore how it works →</a><a class="btn" href="#features">View features</a></div>
+    <div class="hero-note">Interactive 3D concept model · Drag to rotate · Scroll to explore</div>
+  </div>
+  <div class="stage"><div id="scene"></div><div class="badge">3D CONCEPT MODEL</div><div class="hint">↔ Drag to rotate · Wheel to zoom</div></div>
+</section>
+
+<section id="features">
+  <div class="section-head"><div class="kicker">Designed around independence</div><h2>One pair of glasses.<br>Multiple layers of assistance.</h2><p>The website presents the planned product experience while the physical hardware is still being developed.</p></div>
+  <div class="grid">
+    <article class="card"><div class="icon">◉</div><h3>Obstacle awareness</h3><p>Use cameras and sensors to identify nearby objects and provide timely audio cues.</p></article>
+    <article class="card"><div class="icon">⌁</div><h3>Scene understanding</h3><p>Computer vision can describe relevant people, objects and environments in context.</p></article>
+    <article class="card"><div class="icon">Aa</div><h3>Text recognition</h3><p>Capture printed text and convert it into spoken information for easier access.</p></article>
+    <article class="card"><div class="icon">⌖</div><h3>Navigation support</h3><p>Planned integration with location services can provide directional and route-related cues.</p></article>
+    <article class="card"><div class="icon">◖</div><h3>Voice feedback</h3><p>Keep interaction simple with spoken responses rather than a screen-based interface.</p></article>
+    <article class="card"><div class="icon">!</div><h3>Emergency help</h3><p>A dedicated control could trigger a predefined emergency workflow when needed.</p></article>
+  </div>
+</section>
+
+<section id="how">
+  <div class="section-head"><div class="kicker">The experience</div><h2>From the real world<br>to a useful cue.</h2></div>
+  <div class="flow">
+    <div class="step"><span class="num">01 / SENSE</span><h3>Camera + sensors</h3><p>Collect visual and distance information.</p><span class="arrow">→</span></div>
+    <div class="step"><span class="num">02 / PROCESS</span><h3>AI perception</h3><p>Analyze the environment and detect relevant signals.</p><span class="arrow">→</span></div>
+    <div class="step"><span class="num">03 / DECIDE</span><h3>Prioritize</h3><p>Choose the information most useful to the user.</p><span class="arrow">→</span></div>
+    <div class="step"><span class="num">04 / SPEAK</span><h3>Audio feedback</h3><p>Convert results into concise spoken guidance.</p><span class="arrow">→</span></div>
+    <div class="step"><span class="num">05 / ACT</span><h3>User responds</h3><p>Move, ask a question or trigger an action.</p></div>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="section-head"><div class="kicker">Engineering concept</div><h2>A platform you can<br>prototype in layers.</h2></div>
+  <div class="tech">
+    <div class="techbox"><h3>Proposed hardware</h3>
+      <div class="spec"><span>Vision</span><span>Compact camera module</span></div>
+      <div class="spec"><span>Distance</span><span>ToF / ultrasonic sensor</span></div>
+      <div class="spec"><span>Compute</span><span>Edge device or phone companion</span></div>
+      <div class="spec"><span>Audio</span><span>Open-ear / bone-conduction output</span></div>
+      <div class="spec"><span>Controls</span><span>Button + voice interface</span></div>
+      <div class="spec"><span>Power</span><span>Rechargeable battery</span></div>
+    </div>
+    <div class="techbox"><h3>Software stack</h3>
+      <div class="spec"><span>Perception</span><span>Computer vision</span></div>
+      <div class="spec"><span>OCR</span><span>Text detection + speech</span></div>
+      <div class="spec"><span>Assistant</span><span>Natural-language voice layer</span></div>
+      <div class="spec"><span>Connectivity</span><span>Bluetooth / Wi-Fi</span></div>
+      <div class="spec"><span>Safety</span><span>Low-latency local alerts</span></div>
+      <div class="spec"><span>App</span><span>Setup, preferences, diagnostics</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="founder">
+  <div class="section-head">
+    <div class="kicker">The person behind the idea</div>
+    <h2>Built with purpose.<br>Designed for impact.</h2>
+  </div>
+  <div class="founder">
+    <div class="founder-photo" aria-label="Founder photo placeholder">
+      <span class="photo-label">Founder Photo — Add Later</span>
+    </div>
+    <div class="founder-copy">
+      <div class="kicker">Founder & Project Lead</div>
+      <h3>Mahakaleshwar Pandurang Gaikwad</h3>
+      <div class="founder-role">SightAssist · Student Innovation Project</div>
+      <p>
+        Mahakaleshwar Pandurang Gaikwad is a 3rd Year B.Voc (Computer Technology)
+        student at RSML College and the founder and project lead behind SightAssist.
+        The project explores how computer vision, sensors and voice-based feedback
+        can be combined into an accessible smart-glasses concept for blind and
+        visually impaired people.
+      </p>
+      <div class="founder-meta">
+        <span class="pill">3rd Year Student</span>
+        <span class="pill">B.Voc — Computer Technology</span>
+        <span class="pill">RSML College</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="section-head"><div class="kicker">Build roadmap</div><h2>Concept → prototype →<br>real-world testing.</h2></div>
+  <div class="roadmap">
+    <div class="phase"><strong>Phase 01</strong><p><b>Concept & industrial design.</b> Finalize frame geometry, component placement, user controls and the core interaction model.</p></div>
+    <div class="phase"><strong>Phase 02</strong><p><b>Bench prototype.</b> Connect camera, distance sensor, processor and audio output on an adjustable frame.</p></div>
+    <div class="phase"><strong>Phase 03</strong><p><b>Software prototype.</b> Implement object detection, OCR, voice commands and concise audio feedback.</p></div>
+    <div class="phase"><strong>Phase 04</strong><p><b>Usability testing.</b> Test latency, comfort, false alerts, battery life and accessibility with appropriate supervision and safety protocols.</p></div>
+  </div>
+</section>
+
+<div class="cta" id="contact">
+  <div><h2>Build the future of accessible vision.</h2><p>This site is a presentation prototype. Replace the conceptual 3D model and feature claims with your actual hardware specifications as the project develops.</p></div>
+  <a class="btn primary" href="mailto:hello@example.com">Start the project →</a>
+</div>
+</main>
+
+<footer class="footer"><span>© 2026 SightAssist Concept</span><span>Designed as an early-stage product prototype</span></footer>
+
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js';
+import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/controls/OrbitControls.js';
+
+const mount=document.getElementById('scene');
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(38,mount.clientWidth/mount.clientHeight,.1,100);
+camera.position.set(0,1.0,8.5);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(mount.clientWidth,mount.clientHeight);
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+mount.appendChild(renderer.domElement);
+
+scene.add(new THREE.HemisphereLight(0xbfefff,0x10151d,2.2));
+const key=new THREE.DirectionalLight(0xffffff,3.5);key.position.set(4,5,6);scene.add(key);
+const rim=new THREE.PointLight(0x54dfff,8,15);rim.position.set(-3,2,3);scene.add(rim);
+
+const group=new THREE.Group(); scene.add(group);
+const frameMat=new THREE.MeshPhysicalMaterial({color:0x141b25,metalness:.75,roughness:.2,clearcoat:.5});
+const lensMat=new THREE.MeshPhysicalMaterial({color:0x66ddff,metalness:.05,roughness:.08,transmission:.45,transparent:true,opacity:.65,emissive:0x0b3040});
+const darkMat=new THREE.MeshStandardMaterial({color:0x070b10,metalness:.7,roughness:.2});
+const accentMat=new THREE.MeshStandardMaterial({color:0x62e9ff,emissive:0x0a6b7a,emissiveIntensity:2});
+
+function box(x,y,z,sx,sy,sz,mat=frameMat,rx=0,ry=0,rz=0){
+ const m=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mat);m.position.set(x,y,z);m.rotation.set(rx,ry,rz);group.add(m);return m;
+}
+function cyl(x,y,z,r,h,mat=frameMat,rot=[0,0,0]){
+ const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,32),mat);m.position.set(x,y,z);m.rotation.set(...rot);group.add(m);return m;
+}
+// Front frame
+box(0,0,0,4.4,.22,.28);
+box(-2.12,-.02,0,.28,.35,.42); box(2.12,-.02,0,.28,.35,.42);
+// lenses
+for(const x of [-1.15,1.15]){
+ const lens=new THREE.Mesh(new THREE.CylinderGeometry(.95,.95,.10,64),lensMat);
+ lens.rotation.x=Math.PI/2; lens.position.set(x,-.58,.04); lens.scale.set(1.32,.82,1); group.add(lens);
+ const rim=new THREE.Mesh(new THREE.TorusGeometry(1,.07,12,64),frameMat);
+ rim.scale.set(1.32,.82,1);rim.position.set(x,-.58,.10);group.add(rim);
+}
+// bridge
+box(0,-.48,.08,.75,.15,.22);
+// temples
+box(-2.65,.02,-.05,1.55,.18,.23,frameMat,0,0,-.04);
+box(2.65,.02,-.05,1.55,.18,.23,frameMat,0,0,.04);
+// camera module
+const cam=new THREE.Mesh(new THREE.CylinderGeometry(.23,.23,.18,32),darkMat);
+cam.rotation.x=Math.PI/2;cam.position.set(0,-.08,.25);group.add(cam);
+const led=new THREE.Mesh(new THREE.SphereGeometry(.055,16,16),accentMat);led.position.set(0,-.08,.36);group.add(led);
+// side sensors
+for(const x of [-2.25,2.25]){const s=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,.10,24),accentMat);s.rotation.x=Math.PI/2;s.position.set(x,.03,.18);group.add(s);}
+
+group.rotation.x=-.12; group.rotation.y=-.28;
+const controls=new OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;controls.enablePan=false;controls.minDistance=5.2;controls.maxDistance=12;controls.target.set(0,-.25,0);
+
+function resize(){const w=mount.clientWidth,h=mount.clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h)}
+addEventListener('resize',resize);
+function animate(t){requestAnimationFrame(animate);controls.update();led.material.emissiveIntensity=1.7+Math.sin(t*.004)*.7;renderer.render(scene,camera)}
+animate(0);
+</script>
+</body>
+</html>
